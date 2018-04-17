@@ -6,22 +6,22 @@
 | Code quality          | [![Maintainability](https://api.codeclimate.com/v1/badges/dfcf925fdb8be0544c5e/maintainability)](https://codeclimate.com/github/pyreload/pyreload/maintainability) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f146f220efef4a0f84ee1aff0e1a224f)](https://www.codacy.com/app/adamantike/pyreload) |
 | Test coverage         | [![Coverage Status](https://coveralls.io/repos/github/pyreload/pyreload/badge.svg?branch=master)](https://coveralls.io/github/pyreload/pyreload?branch=master) [![Test Coverage](https://api.codeclimate.com/v1/badges/dfcf925fdb8be0544c5e/test_coverage)](https://codeclimate.com/github/pyreload/pyreload/test_coverage) [![Codacy Badge](https://api.codacy.com/project/badge/Coverage/f146f220efef4a0f84ee1aff0e1a224f)](https://www.codacy.com/app/adamantike/pyreload) |
 | Dependency management | [![Requirements Status](https://requires.io/github/pyreload/pyreload/requirements.svg?branch=master)](https://requires.io/github/pyreload/pyreload/requirements/?branch=master) |
+| Communication | [![Join the chat](https://badges.gitter.im/pyreload/Lobby.svg)](https://gitter.im/pyreload/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) |
 
 Description
 ===========
 
-pyLoad is a free and open source downloader for 1-click-hosting sites
-like rapidshare.com or uploaded.to.
+pyreload forked pyLoad to focus on a deliverable software with code tests and build process.
+
+Its a free and open source downloader for 1-click-hosting sites like rapidshare.com or uploaded.to.
 It supports link decryption as well as all important container formats.
 
-pyLoad is written entirely in Python and is currently under heavy development.
-
-For news, downloads, wiki, forum and further information visit https://pyload.net/
+pyreload is written in Python and is currently under heavy development.
 
 To report bugs, suggest features, ask a question, get the developer version
-or help us out, visit http://github.com/pyload/pyload
+or help us out, visit http://github.com/pyreload/pyreload
 
-Documentation about extending pyLoad can be found at https://github.com/pyload/pyload/wiki or join us at #pyload on irc.freenode.net
+Documentation about extending pyLoad can be found at https://github.com/pyload/pyload/wiki
 
 Dependencies
 ============
@@ -90,7 +90,3 @@ for more options refer to::
     python pyLoadCli.py -h
 
 The webinterface can be accessed when pointing your webbrowser to the ip and configured port, defaults to http://localhost:8000
-
-Notes
-=====
-For more information, see https://pyload.net/
