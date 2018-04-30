@@ -1,5 +1,5 @@
 # Everything the developer needs in addition to the production requirements
--r install-requirements.txt
+-r prod.txt
 
 mock == 2.0.0
 pytest-runner == 4.2
