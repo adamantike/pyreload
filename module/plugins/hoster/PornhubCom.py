@@ -46,7 +46,7 @@ class BIGHTTPRequest(HTTPRequest):
 class PornhubCom(SimpleHoster):
     __name__ = "PornhubCom"
     __type__ = "hoster"
-    __version__ = "0.61"
+    __version__ = "0.62"
     __status__ = "testing"
 
     __pattern__ = r'https?://(?:www\.)?pornhub\.com/view_video\.php\?viewkey=\w+'
@@ -111,7 +111,7 @@ class PornhubCom(SimpleHoster):
         res = self.js.eval(script)
         json_data = json.loads(res)
 
-        urls = dict([(int(re.search("^(\d+)", _x['text']).group(0)), _x['url'])
+        urls = dict([(int(re.search(r'^(\d+)', _x['text']).group(0)), _x['url'])
                      for _x in json_data if _x['url']])
 
         quality = max(urls.keys())

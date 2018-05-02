@@ -17,7 +17,7 @@ from ..internal.Hoster import Hoster
 class ShareplaceCom(Hoster):
     __name__ = "ShareplaceCom"
     __type__ = "hoster"
-    __version__ = "0.19"
+    __version__ = "0.20"
     __status__ = "testing"
 
     __pattern__ = r'http://(?:www\.)?shareplace\.(com|org)/\?\w+'
@@ -55,7 +55,7 @@ class ShareplaceCom(Hoster):
 
     def download_html(self):
         url = re.sub(
-            "shareplace.com\/\?",
+            r'shareplace.com\/\?',
             "shareplace.com//index1.php/?a=",
             self.pyfile.url)
         self.data = self.load(url)
@@ -79,7 +79,7 @@ class ShareplaceCom(Hoster):
         if not self.data:
             self.download_html()
 
-        return re.search("<title>\s*(.*?)\s*</title>", self.data).group(1)
+        return re.search(r'<title>\s*(.*?)\s*</title>', self.data).group(1)
 
     def file_exists(self):
         """

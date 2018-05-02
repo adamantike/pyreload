@@ -462,7 +462,7 @@ class IRC(object):
 class XDCC(Hoster):
     __name__    = "XDCC"
     __type__    = "hoster"
-    __version__ = "0.50"
+    __version__ = "0.51"
     __status__  = "testing"
 
     __pattern__ = r'xdcc://(?P<SERVER>.*?)/#?(?P<CHAN>.*?)/(?P<BOT>.*?)/#?(?P<PACK>\d+)/?'
@@ -645,7 +645,7 @@ class XDCC(Hoster):
             self.log_error(_("Invalid Pack Number"))
             self.fail(_("Invalid Pack Number"))
 
-        m = re.match('\x01DCC SEND "?(?P<NAME>.*?)"? (?P<IP>\d+) (?P<PORT>\d+)(?: (?P<SIZE>\d+))?\x01', text)  #: XDCC?
+        m = re.match(r'\x01DCC SEND "?(?P<NAME>.*?)"? (?P<IP>\d+) (?P<PORT>\d+)(?: (?P<SIZE>\d+))?\x01', text)  #: XDCC?
         if m:
             ip = socket.inet_ntoa(struct.pack('!I', int(m.group('IP'))))
             self.dcc_port = int(m.group('PORT'))

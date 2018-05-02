@@ -18,7 +18,7 @@ from ..internal.SimpleHoster import SimpleHoster
 class OneFichierCom(SimpleHoster):
     __name__ = "OneFichierCom"
     __type__ = "hoster"
-    __version__ = "1.12"
+    __version__ = "1.13"
     __status__ = "testing"
 
     __pattern__ = r'https?://(?:www\.)?(?:(?P<ID1>\w+)\.)?(?P<HOST>1fichier\.com|alterupload\.com|cjoint\.net|d(?:es)?fichiers\.com|dl4free\.com|megadl\.fr|mesfichiers\.org|piecejointe\.net|pjointe\.com|tenvoi\.com)(?:/\?(?P<ID2>\w+))?'
@@ -105,7 +105,7 @@ class OneFichierCom(SimpleHoster):
         return info
 
     def handle_free(self, pyfile):
-        url, inputs = self.parse_html_form('action="https://1fichier.com/\?[\w^_]+')
+        url, inputs = self.parse_html_form(r'action="https://1fichier.com/\?[\w^_]+')
 
         if not url:
             self.log_error(_("Free download form not found"))

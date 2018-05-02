@@ -24,7 +24,7 @@ from .misc import (
 class SimpleCrypter(Crypter):
     __name__ = "SimpleCrypter"
     __type__ = "crypter"
-    __version__ = "0.94"
+    __version__ = "0.95"
     __status__ = "testing"
 
     __pattern__ = r'^unmatchable$'
@@ -37,7 +37,7 @@ class SimpleCrypter(Crypter):
     __license__ = "GPLv3"
     __authors__ = [("Walter Purcaro", "vuolter@gmail.com")]
 
-    """
+    r"""
     Following patterns should be defined by each crypter:
 
       LINK_PATTERN: Download link or regex to catch links in group(1)

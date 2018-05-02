@@ -9,10 +9,7 @@ from __future__ import (
 
 import re
 
-from bs4 import (
-    BeautifulSoup,
-    BeautifulStoneSoup,
-)
+from bs4 import BeautifulSoup
 
 from ..internal.Crypter import Crypter
 
@@ -20,7 +17,7 @@ from ..internal.Crypter import Crypter
 class HoerbuchIn(Crypter):
     __name__ = "HoerbuchIn"
     __type__ = "crypter"
-    __version__ = "0.68"
+    __version__ = "0.69"
     __status__ = "testing"
 
     __pattern__ = r'http://(?:www\.)?hoerbuch\.us/(wp/horbucher/\d+/|tp/out\.php\?.+|protection/folder_\d+\.html)'
@@ -33,13 +30,10 @@ class HoerbuchIn(Crypter):
     __authors__ = [("spoob", "spoob@pyload.org"),
                    ("mkaay", "mkaay@mkaay.de")]
 
-    article = re.compile("http://(?:www\.)?hoerbuch\.us/wp/horbucher/\d+/.+/")
-    protection = re.compile(
-        "http://(?:www\.)?hoerbuch\.us/protection/folder_\d+.html")
-    uploaded = re.compile(
-        "http://(?:www\.)?hoerbuch\.us/protection/uploaded/(\w+)\.html")
-    hoster_links = re.compile(
-        "http://(?:www\.)?hoerbuch\.us/wp/goto/Download/\d+/")
+    article = re.compile(r'http://(?:www\.)?hoerbuch\.us/wp/horbucher/\d+/.+/')
+    protection = re.compile(r'http://(?:www\.)?hoerbuch\.us/protection/folder_\d+.html')
+    uploaded = re.compile(r'http://(?:www\.)?hoerbuch\.us/protection/uploaded/(\w+)\.html')
+    hoster_links = re.compile(r'http://(?:www\.)?hoerbuch\.us/wp/goto/Download/\d+/')
 
     def decrypt(self, pyfile):
         self.pyfile = pyfile

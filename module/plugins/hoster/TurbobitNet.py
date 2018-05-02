@@ -25,7 +25,7 @@ from ..internal.SimpleHoster import SimpleHoster
 class TurbobitNet(SimpleHoster):
     __name__ = "TurbobitNet"
     __type__ = "hoster"
-    __version__ = "0.32"
+    __version__ = "0.33"
     __status__ = "broken"
 
     __pattern__ = r'http://(?:www\.)?turbobit\.net/(?:download/free/)?(?P<ID>\w+)'
@@ -42,7 +42,8 @@ class TurbobitNet(SimpleHoster):
                    ("prOq", None)]
 
     URL_REPLACEMENTS = [
-        (__pattern__ + ".*", "http://turbobit.net/\g<ID>.html")]
+        (__pattern__ + '.*', r'http://turbobit.net/\g<ID>.html'),
+    ]
 
     COOKIES = [("turbobit.net", "user_lang", "en")]
 
@@ -137,7 +138,7 @@ class TurbobitNet(SimpleHoster):
     def get_download_url(self, rtUpdate):
         self.req.http.lastURL = self.link
 
-        m = re.search("(/\w+/timeout\.js\?\w+=)([^\"\'<>]+)", self.data)
+        m = re.search(r'(/\w+/timeout\.js\?\w+=)([^\"\'<>]+)', self.data)
         if m is not None:
             url = "http://turbobit.net%s%s" % m.groups()
         else:

@@ -21,7 +21,7 @@ from ..internal.SimpleHoster import SimpleHoster
 class ShareonlineBiz(SimpleHoster):
     __name__ = "ShareonlineBiz"
     __type__ = "hoster"
-    __version__ = "0.67"
+    __version__ = "0.69"
     __status__ = "testing"
 
     __pattern__ = r'https?://(?:www\.)?(share-online\.biz|egoshare\.com)/(download\.php\?id=|dl/)(?P<ID>\w+)'
@@ -40,8 +40,8 @@ class ShareonlineBiz(SimpleHoster):
                    ("Walter Purcaro", "vuolter@gmail.com")]
 
     URL_REPLACEMENTS = [
-        (__pattern__ + ".*",
-         "http://www.share-online.biz/dl/\g<ID>")]
+        (__pattern__ + '.*', r'http://www.share-online.biz/dl/\g<ID>'),
+    ]
 
     CHECK_TRAFFIC = True
 

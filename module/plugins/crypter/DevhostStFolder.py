@@ -20,7 +20,7 @@ from ..internal.SimpleCrypter import SimpleCrypter
 class DevhostStFolder(SimpleCrypter):
     __name__ = "DevhostStFolder"
     __type__ = "crypter"
-    __version__ = "0.13"
+    __version__ = "0.14"
     __status__ = "testing"
 
     __pattern__ = r'http://(?:www\.)?d-h\.st/users/(?P<USER>\w+)(/\?fld_id=(?P<ID>\d+))?'
@@ -54,7 +54,7 @@ class DevhostStFolder(SimpleCrypter):
             html = self.load(urljoin("http://d-h.st/", m.group(1)),
                              cookies=False)
 
-            p = '\?fld_id=%s.*?">(.+?)<' % self.info['pattern']['ID']
+            p = r'\?fld_id=%s.*?">(.+?)<' % self.info['pattern']['ID']
             m = re.search(p, html)
             self.pyfile.name = m.group(1)
 

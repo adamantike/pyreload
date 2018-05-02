@@ -15,7 +15,7 @@ from ..internal.Crypter import Crypter
 class PastedCo(Crypter):
     __name__ = "PastedCo"
     __type__ = "crypter"
-    __version__ = "0.06"
+    __version__ = "0.07"
     __status__ = "testing"
 
     __pattern__ = r'http://pasted\.co/\w+'
@@ -37,11 +37,11 @@ class PastedCo(Crypter):
         pack_folder = package.folder
         html = self.load(pyfile.url, decode=True).splitlines()
         fs_url = None
-        FS_URL_RE = re.compile(
-            '%s/fullscreen\.php\?hash=[0-9a-f]*' %
+        fs_url_re = re.compile(
+            r'%s/fullscreen\.php\?hash=[0-9a-f]*' %
             pyfile.url)
         for line in html:
-            match = FS_URL_RE.search(line)
+            match = fs_url_re.search(line)
             if match:
                 fs_url = match.group()
                 break

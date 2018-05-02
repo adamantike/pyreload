@@ -15,7 +15,7 @@ from ..internal.SimpleCrypter import SimpleCrypter
 class HflixIn(SimpleCrypter):
     __name__ = "HflixIn"
     __type__ = "crypter"
-    __version__ = "0.12"
+    __version__ = "0.13"
     __status__ = "testing"
 
     __pattern__ = r'http://(www\.)?hflix\.in/\w+'
@@ -27,7 +27,7 @@ class HflixIn(SimpleCrypter):
     def decrypt(self, pyfile):
         headers = self.load(pyfile.url, just_header=True)
         if 'refresh' in headers and headers['refresh']:
-            m = re.search("\d+;url=(.+)", headers['refresh'])
+            m = re.search(r'\d+;url=(.+)', headers['refresh'])
             if m and "http://hflix.in/admin" not in m.group(1):
                 self.packages.append(
                     (pyfile.package().name, [

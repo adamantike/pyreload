@@ -26,7 +26,7 @@ from ..internal.SimpleHoster import SimpleHoster
 class RapidgatorNet(SimpleHoster):
     __name__ = "RapidgatorNet"
     __type__ = "hoster"
-    __version__ = "0.51"
+    __version__ = "0.52"
     __status__ = "testing"
 
     __pattern__ = r'https?://(?:www\.)?(?:rapidgator\.net|rg\.to)/file/\w+'
@@ -54,7 +54,7 @@ class RapidgatorNet(SimpleHoster):
 
     PREMIUM_ONLY_PATTERN = r'You can download files up to|This file can be downloaded by premium only<'
     DOWNLOAD_LIMIT_ERROR_PATTERN = r'You have reached your (daily|hourly) downloads limit'
-    IP_BLOCKED_ERROR_PATTERN = 'You can`t download more than 1 file at a time in free mode\.' \
+    IP_BLOCKED_ERROR_PATTERN = r'You can`t download more than 1 file at a time in free mode\.' \
                                ''
     WAIT_PATTERN = r'(?:Delay between downloads must be not less than|Try again in).+'
 

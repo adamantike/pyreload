@@ -15,7 +15,7 @@ from ..internal.XFSHoster import XFSHoster
 class ClicknuploadCom(XFSHoster):
     __name__ = "ClicknuploadCom"
     __type__ = "hoster"
-    __version__ = "0.06"
+    __version__ = "0.07"
     __status__ = "testing"
 
     __pattern__ = r'https?://(?:www\.)?clicknupload\.(?:com|org|me|link)/(?P<ID>\w{12})'
@@ -32,7 +32,7 @@ class ClicknuploadCom(XFSHoster):
 
     PLUGIN_DOMAIN = "clicknupload.org"
 
-    URL_REPLACEMENTS = [(__pattern__ + '.*', "https://clicknupload.org/\g<ID>")]
+    URL_REPLACEMENTS = [(__pattern__ + '.*', r'https://clicknupload.org/\g<ID>')]
 
     NAME_PATTERN = r'name="fname" value="(?P<N>.+?)">'
     SIZE_PATTERN = r'<b>Size: (?P<S>[\d.,]+) (?P<U>[\w^_]+)'

@@ -21,7 +21,7 @@ from ..internal.misc import (
 class YoutubeComFolder(Crypter):
     __name__ = "YoutubeComFolder"
     __type__ = "crypter"
-    __version__ = "1.11"
+    __version__ = "1.12"
     __status__ = "testing"
 
     __pattern__ = r'https?://(?:www\.|m\.)?youtube\.com/(?P<TYPE>user|playlist|view_play_list)(/|.*?[?&](?:list|p)=)(?P<ID>[\w\-]+)'
@@ -113,7 +113,7 @@ class YoutubeComFolder(Crypter):
             if channel:
                 playlists = self.get_playlists(channel['id'])
                 self.log_debug(
-                    "%s playlist\s found on channel \"%s\"" %
+                    '%s playlist/s found on channel "%s"' %
                     (len(playlists), channel['title']))
 
                 relatedplaylist = dict(
@@ -154,7 +154,7 @@ class YoutubeComFolder(Crypter):
                 p['channelTitle'],
                 p_name)
             self.log_debug(
-                "%s video\s found on playlist \"%s\"" %
+                '%s video/s found on playlist "%s"' %
                 (len(p_videos), p_name))
 
             if not p_videos:
@@ -163,7 +163,7 @@ class YoutubeComFolder(Crypter):
                 p_urls = [urlize(v_id)
                           for v_id in p_videos if v_id not in addedvideos]
                 self.log_debug(
-                    "%s video\s available on playlist \"%s\" after duplicates cleanup" %
+                    '%s video/s available on playlist "%s" after duplicates cleanup' %
                     (len(p_urls), p_name))
             else:
                 p_urls = list(map(urlize, p_videos))

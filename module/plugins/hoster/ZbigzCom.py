@@ -23,7 +23,7 @@ from ..internal.misc import json
 class ZbigzCom(Hoster):
     __name__ = "ZbigzCom"
     __type__ = "hoster"
-    __version__ = "0.04"
+    __version__ = "0.05"
     __status__ = "testing"
 
     __pattern__ = r'https?://.+\.torrent|magnet:\?.+'
@@ -52,7 +52,7 @@ class ZbigzCom(Hoster):
             urlp.path,
             get=get_params)
 
-        m = re.search("%s\((.+?)\);" % json_callback, jquery_data)
+        m = re.search(r'%s\((.+?)\);' % json_callback, jquery_data)
 
         return json.loads(m.group(1)) if m else None
 

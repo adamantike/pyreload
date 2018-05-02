@@ -13,7 +13,7 @@ from ..internal.SimpleCrypter import SimpleCrypter
 class BigfileToFolder(SimpleCrypter):
     __name__ = "BigfileToFolder"
     __type__ = "crypter"
-    __version__ = "0.11"
+    __version__ = "0.12"
     __status__ = "testing"
 
     __pattern__ = r'https?://(?:www\.)?(?:uploadable\.ch|bigfile\.to)/list/\w+'
@@ -29,7 +29,7 @@ class BigfileToFolder(SimpleCrypter):
                    ("Walter Purcaro", "vuolter@gmail.com"),
                    ("GammaC0de", "nitzo2001[AT]yahoo[DOT]com")]
 
-    URL_REPLACEMENTS = [("https?://uploadable\.ch", "https://bigfile.to")]
+    URL_REPLACEMENTS = [(r'https?://uploadable\.ch', 'https://bigfile.to')]
 
     LINK_PATTERN = r'"(.+?)" class="icon_zipfile">'
     NAME_PATTERN = r'<div class="folder"><span>&nbsp;</span>(?P<N>.+?)</div>'

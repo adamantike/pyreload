@@ -225,7 +225,7 @@ def error500(error):
 
 
 # render js
-@route("/media/js/<path:re:.+\.js>")
+@route(r'/media/js/<path:re:.+\.js>')
 def js_dynamic(path):
     response.headers.update({
         smart_str('Expires'): smart_str(

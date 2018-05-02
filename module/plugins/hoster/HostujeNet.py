@@ -15,7 +15,7 @@ from ..internal.SimpleHoster import SimpleHoster
 class HostujeNet(SimpleHoster):
     __name__ = "HostujeNet"
     __type__ = "hoster"
-    __version__ = "0.07"
+    __version__ = "0.08"
     __status__ = "testing"
 
     __pattern__ = r'http://(?:www\.)?hostuje\.net/\w+'
@@ -51,9 +51,8 @@ class HostujeNet(SimpleHoster):
             self.error(_("Script not found"))
 
         action, inputs = self.parse_html_form(
-            pyfile.url.replace(
-                ".", "\.").replace(
-                "?", "\?"))
+            pyfile.url.replace('.', r'\.').replace('?', r'\?')
+        )
         if not action:
             self.error(_("Form not found"))
 

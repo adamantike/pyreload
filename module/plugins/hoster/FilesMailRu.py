@@ -15,7 +15,7 @@ from ..internal.Hoster import Hoster
 class FilesMailRu(Hoster):
     __name__ = "FilesMailRu"
     __type__ = "hoster"
-    __version__ = "0.41"
+    __version__ = "0.42"
     __status__ = "testing"
 
     __pattern__ = r'http://(?:www\.)?files\.mail\.ru/.+'
@@ -30,7 +30,7 @@ class FilesMailRu(Hoster):
 
     def process(self, pyfile):
         self.data = self.load(pyfile.url)
-        self.url_pattern = '<a href="(.+?)" onclick="return Act\(this\, \'dlink\'\, event\)">(.+?)</a>'
+        self.url_pattern = r'<a href="(.+?)" onclick="return Act\(this\, \'dlink\'\, event\)">(.+?)</a>'
 
         #: Marks the file as "offline" when the pattern was found on the html-page'''
         if r'<div class="errorMessage mb10">' in self.data:
