@@ -65,14 +65,6 @@ msgstr ""
 msgid "OpenSSL for secure connection"
 msgstr ""
 
-#: pyLoadCore.py:363
-msgid "Moving old user config to DB"
-msgstr ""
-
-#: pyLoadCore.py:366
-msgid "Please check your logindata with ./pyLoadCore.py -u"
-msgstr ""
-
 #: pyLoadCore.py:369
 msgid "All links removed"
 msgstr ""

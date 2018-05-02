@@ -382,11 +382,6 @@ class Core(object):
             self.check_install("OpenSSL", _("OpenSSL for secure connection"))
 
         self.setupDB()
-        if self.config.oldRemoteData:
-            self.log.info(_("Moving old user config to DB"))
-            self.db.addUser(self.config.oldRemoteData["username"], self.config.oldRemoteData["password"])
-
-            self.log.info(_("Please check your logindata with ./pyLoadCore.py -u"))
 
         if self.deleteLinks:
             self.log.info(_("All links removed"))

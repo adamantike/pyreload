@@ -67,17 +67,13 @@ class ConfigParser:
     CONFLINE = re.compile(r'^\s*(?P<T>.+?)\s+(?P<N>[^ ]+?)\s*:\s*"(?P<D>.+?)"\s*=\s?(?P<V>.*)')
 
     def __init__(self):
-        """Constructor"""
-        self.config = {} # the config values
-        self.plugin = {} # the config for plugins
-        self.oldRemoteData = {}
-
-        self.pluginCB = None # callback when plugin config value is changed
+        """Constructor."""
+        self.config = {}  # the config values
+        self.plugin = {}  # the config for plugins
+        self.pluginCB = None  # callback when plugin config value is changed
 
         self.checkVersion()
-
-        self.readConfig()
-
+        self.read_config()
         self.deleteOldPlugins()
 
     def checkVersion(self):
@@ -122,33 +118,22 @@ class ConfigParser:
                 else:
                     raise
 
-    def readConfig(self):
-        """reads the config file"""
-
-        self.config = self.parseConfig(join(pypath, "module", "config", "default.conf"))
-        self.plugin = self.parseConfig("plugin.conf")
+    def read_config(self):
+        """Read the configuration files and save their contents to inner objects."""
+        self.config = self.parse_config(join(pypath, 'module', 'config', 'default.conf'))
+        self.plugin = self.parse_config('plugin.conf')
 
         try:
-            homeconf = self.parseConfig("pyload.conf")
-            if "username" in homeconf["remote"]:
-                if "password" in homeconf["remote"]:
-                    self.oldRemoteData = {"username": homeconf["remote"]["username"]["value"],
-                                          "password": homeconf["remote"]["username"]["value"]}
-                    del homeconf["remote"]["password"]
-                del homeconf["remote"]["username"]
+            homeconf = self.parse_config('pyload.conf')
             self.updateValues(homeconf, self.config)
-
         except Exception as e:
-            print("Config Warning")
+            print('Config Warning')
             print_exc()
 
-
-    def parseConfig(self, config):
-        """parses a given configfile"""
-
-        f = open(config)
-
-        config = f.read()
+    def parse_config(self, config):
+        """Parse a given configuration file."""
+        with open(config) as f:
+            config = f.read()
 
         config = config.splitlines()[1:]
 
@@ -220,7 +205,6 @@ class ConfigParser:
                 print(line)
                 print_exc()
 
-        f.close()
         return conf
 
 
@@ -243,9 +227,9 @@ class ConfigParser:
                         #else:
                         #    dest[section] = config[section]
 
-    def saveConfig(self, config, filename):
-        """saves config to filename"""
-        with open(filename, "wb") as f:
+    def save_config(self, config, filename):
+        """Save configuration `config` to a file with `filename` name."""
+        with open(filename, 'wb') as f:
             chmod(filename, 0o600)
             f.write(smart_bytes('version: {0} \n'.format(CONF_VERSION)))
 
@@ -296,8 +280,8 @@ class ConfigParser:
     def save(self):
         """saves the configs to disk"""
 
-        self.saveConfig(self.config, "pyload.conf")
-        self.saveConfig(self.plugin, "plugin.conf")
+        self.save_config(self.config, "pyload.conf")
+        self.save_config(self.plugin, "plugin.conf")
 
     def __getitem__(self, section):
         """provides dictonary like access: c['section']['option']"""
@@ -402,21 +386,3 @@ class Section:
     def __setitem__(self, item, value):
         """setitem"""
         self.parser.set(self.section, item, value)
-
-
-if __name__ == "__main__":
-    pypath = ""
-
-    from time import time
-
-    a = time()
-
-    c = ConfigParser()
-
-    b = time()
-
-    print("sec", b - a)
-
-    print(c.config)
-
-    c.saveConfig(c.config, "user.conf")
